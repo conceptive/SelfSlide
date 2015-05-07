@@ -1,0 +1,90 @@
+body {
+	background: #22313F;
+	color: #EEEEEE;
+	text-align: center;
+	font-family: 'Helvetica', Sans-Serif
+}
+
+h1 {
+	font-size: 100px
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 20px;
+  width: 40%;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  background-color: #ccc;
+  color: #EEEEEE;
+  text-overflow: ellipsis;
+  font-size: 1.5em;
+  border-radius: 0;
+  text-align: center;
+
+}
+
+input:focus, textarea:focus, button:focus {
+    outline: none;
+    background: #ccc;
+    color: #22313F;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #ccc;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #ccc;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #ccc;
+}
+
+button {
+  padding: 0.6em 1.5em;
+  border: 3px solid #232529;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #22313F;
+  cursor: pointer;
+  margin: 20px;
+}
+
+/*** Login Page ***/
+
+#login-wrapper {
+  width: 1200px;
+  height: 500px;
+  margin: 0 auto;
+  border: solid 2px #eee;
+}
+
+#login-box {
+	display: block;
+	width: 45%;
+	height: 400px;
+  padding: 20px;
+  margin-top: 20px;
+	float: left;
+}
+
+#create-account-box {
+	display: block;
+	width: 45%;
+	height: 400px;
+	padding: 20px;
+  float: right;
+  margin-top: 20px;
+  border-left: solid 2px #eeeeee;
+}
+
+#session {
+  font-size: 200px;
+}
