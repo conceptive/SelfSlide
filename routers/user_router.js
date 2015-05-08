@@ -24,6 +24,14 @@ var authenticate = function(req, res, next) {
   req.session.currentUser ? next() : res.status(400).send({err: 400, msg: 'LOGIN TROLL'});
 };
 
+userRouter.get("/", function(req, res) {
+  User
+  .findAll()
+  .then(function(users) {
+    res.send(users);
+  });
+});
+
 userRouter.get("/:id" , authenticate, restrictAccess, function(req, res) {
 	var userID = req.params.id;
 	User.findOne({

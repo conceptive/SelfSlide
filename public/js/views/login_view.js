@@ -3,8 +3,6 @@ App.Views.LoginPopup = Backbone.View.extend({
 
 	initialize: function() {
     this.loginTemplate = Handlebars.compile($('#login-template').html());
-	  // this.userTemplate = Handlebars.compile($('#user-template').html());
-
   },
 
 	render: function() {
@@ -21,7 +19,7 @@ App.Views.LoginPopup = Backbone.View.extend({
   },
 
   hidePopup: function() {
-    this.$el.fadeOut(2000);
+    this.$el.fadeOut(500);
   },
 
 	login: function(){
@@ -32,6 +30,7 @@ App.Views.LoginPopup = Backbone.View.extend({
       username: username,
       password: password
     }).done(this.renderSession.bind(this))
+      .done(this.hidePopup.bind(this))
         .fail(function(response) {
         var err = response.responseJSON;
         alert(err.err + ' - ' + err.msg);
@@ -39,14 +38,8 @@ App.Views.LoginPopup = Backbone.View.extend({
   },
 
   renderSession: function() {
-  $.get('/current_user').done(function(user) {
-    
-  }).fail(function(jqXHR) {
-    if (jqXHR.status === 404) {
-      $('#session').html();
-    }
-  });
-},
+    App.router.navigate("home", {trigger: true})
+  },
 
   signup: function() {
     var username = $('#create-username').val();
