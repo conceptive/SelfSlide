@@ -6,12 +6,35 @@ var application_root   = __dirname,
 		path			         = require("path"),
 		bcrypt             = require("bcrypt"),
   	request			       = require("request"),
-  	session            = require("express-session");
+  	session            = require("express-session"),
   	// slideRouter        = require('./routers/slide_router.js'),
     userRouter         = require('./routers/user_router.js');
 
 var User = models.users;
 var app  = express();
+var secret = 'mck';
+var port = process.env.PORT || 8080;
+var io = require('socket.io').listen(app.listen(port));
+
+// Initialize a new socket.io application
+var presentation = io.on('connection', function (socket) {
+  socket.on('load', function(data){
+    socket.emit('access', {
+      access: (data.key === secret ? "granted" : "denied")
+    });
+  });
+
+  socket.on('slide-changed', function(data){
+      // Check the secret key again
+      if(data.key === secret) {
+
+        // Tell all connected clients to navigate to the new slide
+        presentation.emit('navigate', {
+          hash: data.hash
+        });
+      }
+  });
+});
 
 // Server Configuration
 app.use( logger('dev') );
@@ -35,9 +58,6 @@ app.use(session({
 app.get('/debug_session', function(req, res) {
   res.send(req.session);
 });
-
-app.use('/users', userRouter);
-// app.use('/slides', slideRouter);
 
 app.post('/sessions', function(req, res) {
   var loginUsername = req.body.username;
@@ -85,5 +105,10 @@ app.get('/current_user', function(req, res) {
     });
 });
 
+app.use('/users', userRouter);
+// app.use('/slides', slideRouter);
+
 // Export app as module
 module.exports = app;
+ 
+console.log('Presentation running on http://localhost:' + port);
