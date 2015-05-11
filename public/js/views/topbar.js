@@ -4,12 +4,17 @@ App.Views.TopBar = Backbone.View.extend({
   initialize: function() {
     this.template = Handlebars.compile( $("#header-template").html());
   },
+  
   render: function() {
     this.$el.html(this.template);
+    console.log('top bar loaded')
   },
 
-  // events: {
-  //   "click .nav-search": "toSearch",
-  //   "click .nav-profile": "viewProfile"  
-  // }
+  login: function() {
+    Backbone.history.navigate("login", {trigger: true});
+  },
+
+  events: {
+    "click .nav-login": "login",
+  }
 })

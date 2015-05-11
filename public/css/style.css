@@ -1,12 +1,30 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
 body {
 	background: #22313F;
 	color: #EEEEEE;
 	text-align: center;
-	font-family: 'Helvetica', Sans-Serif
+	font-family: 'Roboto', Sans-Serif !important;
+}
+
+section {
+  color: #eeeeee;
 }
 
 h1 {
 	font-size: 100px
+}
+
+h2 {
+  font-size: 50px;
+  padding: 10px;
+}
+
+code {
+  font-size: 12px;
+  color: #222;
+  vertical-align: top;
+  font-weight: bold
 }
 
 input {
@@ -48,16 +66,35 @@ input:focus, textarea:focus, button:focus {
 
 button {
   padding: 0.6em 1.5em;
-  border: 3px solid #232529;
+  border: 3px solid #EEEEEE;
   border-radius: 10px;
   font-size: 30px;
   font-weight: 700;
-  color: #22313F;
+  color: #EEEEEE;
   cursor: pointer;
   margin: 20px;
+  background: #E26A6A;
+}
+
+button:hover {
+  background: #F64747;
 }
 
 /*** Login Page ***/
+
+#login-window {
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+/*  background: #32526e;*/
+  background: #22313F;
+  box-sizing: border-box;
+  padding-top: 40px;
+}
 
 #login-wrapper {
   width: 1200px;
@@ -85,12 +122,16 @@ button {
   border-left: solid 2px #eeeeee;
 }
 
+#close-btn {
+  float: right;
+}
+
 #session {
   font-size: 200px;
   color: white;
 }
 
-#inner-app-wrapper {
+#app-wrapper {
   width: 100%;
   height: 100%;
   top: 0;
@@ -105,19 +146,29 @@ button {
   top: 0;
   left: 0;
   z-index: 10000 !important;
-  background: cornflowerblue;
-  position: absolute
+  position: fixed;
+  background: url('../images/home.jpg');
+  background-size: cover
+}
+
+#inner-home-container {
+  display: block;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  padding: 100px;
+  float: right;
 }
 
 /*** Header Bar ***/
 
 #header {
   width: 100%;
-  background: #32526e;
+  background: #F64747;
   height: 46px;
-  position: fixed;
+  position: relative;
   top:0;
-  z-index: 1;
+  z-index: 5;
   -webkit-box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.75);
@@ -125,10 +176,26 @@ button {
 
 #logo {
   float: left;
+  font-size: 22px;
+  padding: 10px;
 }
 
 #top-menu {
   float: right;
+  padding: 10px;
+  font-size: 20px;
+}
+
+/*Account Popup */
+#popup {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 40px;
 }
 
 
@@ -179,33 +246,45 @@ button {
 
 form.login {
   position: fixed;
-  top: 50%;
-  max-height: 140px;
-  max-width: 390px;
+/*  top: 50%;*/
+/*  max-height: 140px;
+  max-width: 390px;*/
   width: 100%;
-  left: 50%;
-  margin: -70px 0 0 -195px;
+/*  left: 50%;*/
+/*  margin: -70px 0 0 -195px;*/
+  margin: 0 auto;
   text-align: center;
-  z-index: 2;
+  z-index: 100;
   height: 100%;
-  background-color: #fff;
+  background-color: #eeeeee;
   border-radius: 5px;
   padding: 60px 0 0;
 }
 
+form.login h1 {
+  color: #333;
+}
+
+form.login h2 {
+  color: #333;
+  padding-top:20px;
+  margin-bottom: -10px;
+}
+
 form.login span {
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
+  color: #333;
+  line-height: 50px
 }
 
 form.login input[type=text] {
   position: relative;
-  left: -5px;
-  width: 160px;
-  height: 29px;
+  width: 300px;
+  height: 60px;
   padding: 0 10px;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: rgba(255,255,255, 0.8);
   border: 1px solid #C5C5C5;
   border-radius: 2px;
@@ -233,13 +312,12 @@ form.login input[type=text]::-webkit-input-placeholder {
 
 form.login input[type=submit] {
   position: relative;
-  left: 5px;
-  height: 29px;
-  width: 40px;
+  height: 50px;
+  width: 60px;
   line-height: 29px;
   text-align: center;
   padding: 0 10px;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   border: none;
   border-radius: 2px;
@@ -301,40 +379,5 @@ form.login input[type=submit] {
   }
 }
 
-/* -- Blur effect -- */
 
 
-.homebanner.blurred, div.reveal.blurred {
-  -webkit-filter: blur(4px);
-  filter: blur(4px);
-  pointer-events: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.homebanner, div.reveal {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-
-/* -- Demo ads -- */
-
-
-@media (max-width: 1024px) {
-    #bsaHolder{ display:none;}
-}
-
-
-/* -- Link to Tutorialzine -- */
-
-
-.tz-link{
-  text-decoration: none;
-  color: #fff !important;
-  font: bold 36px Arial,Helvetica,sans-serif !important;
-}
-
-.tz-link span{
-  color: #da431c;
-}

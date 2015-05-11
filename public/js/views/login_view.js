@@ -11,15 +11,17 @@ App.Views.LoginPopup = Backbone.View.extend({
 
 	events: {
 		'click #login-btn': 'login',
-		'click #create-account-btn': 'signup'
+		'click #create-account-btn': 'signup',
+    'click #close-btn': 'hidePopup'
 	},
 
 	showPopup: function() {
-    this.$el.fadeIn(500);
+    this.$el.fadeIn(1000);
   },
 
   hidePopup: function() {
     this.$el.fadeOut(500);
+    App.router.navigate("create_presentation", {trigger: true})
   },
 
 	login: function(){
@@ -38,7 +40,7 @@ App.Views.LoginPopup = Backbone.View.extend({
   },
 
   renderSession: function() {
-    App.router.navigate("home", {trigger: true})
+    // App.router.navigate("home", {trigger: true})
   },
 
   signup: function() {
