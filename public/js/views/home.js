@@ -3,16 +3,17 @@ App.Views.Home = Backbone.View.extend ({
 
 	initialize: function() {
 		this.template = Handlebars.compile($('#home-template').html());
-		console.log('intro page here')
-	},
+  },
 	render: function() {
     this.$el.html(this.template);
+    console.log('intro page here');
 	},
 	setUser: function(user) {
     this.model = user;
   },
   renderPreviewOne: function () {
   	this.hideWelcome();
+    App.router.navigate("preview_one");
   },
   hideWelcome: function() {
   	this.$el.fadeOut(500);
