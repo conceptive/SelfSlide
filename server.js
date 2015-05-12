@@ -7,7 +7,7 @@ var application_root   = __dirname,
 		bcrypt             = require("bcrypt"),
   	request			       = require("request"),
   	session            = require("express-session"),
-  	// slideRouter        = require('./routers/slide_router.js'),
+  	presentationRouter        = require('./routers/presentation_router.js'),
     userRouter         = require('./routers/user_router.js');
 
 var User = models.users;
@@ -106,7 +106,7 @@ app.get('/current_user', function(req, res) {
 });
 
 app.use('/users', userRouter);
-// app.use('/slides', slideRouter);
+app.use('/presentations', presentationRouter);
 
 // Export app as module
 module.exports = app;

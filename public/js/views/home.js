@@ -11,14 +11,13 @@ App.Views.Home = Backbone.View.extend ({
 	setUser: function(user) {
     this.model = user;
   },
-  renderPreviewOne: function () {
+  getStarted: function () {
   	this.hideWelcome();
-    App.router.navigate("preview_one");
   },
   hideWelcome: function() {
   	this.$el.fadeOut(500);
   },
   events: {
-    "click #preview-one-btn": "renderPreviewOne"
+    "click #preview-one-btn": "getStarted"
   }
 })
