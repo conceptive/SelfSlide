@@ -22,7 +22,7 @@ h2 {
 
 code {
   font-size: 12px;
-  color: #222;
+  color: #22313F;
   vertical-align: top;
   font-weight: bold
 }
@@ -49,19 +49,32 @@ input:focus, textarea:focus, button:focus {
     color: #22313F;
 }
 
+input[type=button] {
+  padding: 10px;
+  border: 3px solid #EEEEEE;
+  border-radius: 4px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #EEEEEE;
+  cursor: pointer;
+  margin: 20px;
+  background: #E26A6A;
+  width: auto;
+}
+
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #ccc;
+    color:    #555;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #ccc;
+   color:    #555;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #ccc;
+   color:    #555;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-   color:    #ccc;
+   color:    #555;
 }
 
 button {
@@ -78,6 +91,12 @@ button {
 
 button:hover {
   background: #F64747;
+}
+
+.divider {
+  width: 50%;
+  border-top: 2px solid #eee;
+  margin: 40px auto;
 }
 
 /*** Login Page ***/
@@ -198,6 +217,30 @@ button:hover {
   padding-top: 40px;
 }
 
+#create-inner-wrapper {
+  padding: 50px;
+  position: fixed;
+  height: 80%;
+  width: 100%;
+  overflow: scroll;
+  background: #22313F;
+  margin: 0 auto;
+}
+
+#create-inner-wrapper h1 {
+  font-size: 80px
+}
+
+#create-inner-wrapper h2 {
+  font-size: 40px
+}
+
+#create-btn {
+  position: fixed;
+  bottom: 10px; 
+  right: 6px;
+  font-size: 24px;
+}
 
 /*REVEAL TEST STUFF*/
 /*-- Simple CSS Reset -- */

@@ -7,11 +7,10 @@ App.Views.TopBar = Backbone.View.extend({
   
   render: function() {
     this.$el.html(this.template);
-    console.log('top bar loaded')
   },
 
   login: function() {
-    Backbone.history.navigate("login", {trigger: true});
+    App.router.navigate("login", {replace: true});
   },
 
   events: {

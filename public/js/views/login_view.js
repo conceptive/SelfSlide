@@ -7,6 +7,7 @@ App.Views.LoginPopup = Backbone.View.extend({
 
 	render: function() {
     this.$el.html(this.loginTemplate);
+    console.log('login popup')
 	},
 
 	events: {
@@ -21,7 +22,7 @@ App.Views.LoginPopup = Backbone.View.extend({
 
   hidePopup: function() {
     this.$el.fadeOut(500);
-    App.router.navigate("create_presentation", {trigger: true})
+    App.router.navigate("create_presentation", {trigger: true, replace: true})
   },
 
 	login: function(){

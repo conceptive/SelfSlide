@@ -9,7 +9,7 @@ var application_root = __dirname,
 	  session            = require("express-session");
  
 var User      		 = models.users;
-var Presentation   = models.slides;
+var Presentation   = models.presentations;
 
 var userRouter = express.Router();
 
@@ -43,13 +43,13 @@ userRouter.get("/:id" , authenticate, restrictAccess, function(req, res) {
 	});
 });
 
-userRouter.get("/:id/slides" , authenticate, restrictAccess, function(req, res) {
+userRouter.get("/:id/presentation" , authenticate, restrictAccess, function(req, res) {
   User.findOne({
     where: { id: req.params.id },
     include: [Presentation]
   })
   .then(function(user) {
-    res.send(user.slides);
+    res.send(user.presentations);
   })
 });
 
