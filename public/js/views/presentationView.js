@@ -1,17 +1,19 @@
-App.Views.PresentationView = Backbone.Views.extend({
-	el: '#presentation-wrapper',
+App.Views.PresentationView = Backbone.View.extend({
+	el: '#user-presentation',
 
 	initialize: function() {
 		this.template = Handlebars.compile( $('#presentation-template').html() );
 	},
-
 	render: function() {
-		this.$el.html(this.template( this.model.toJSON() ));
+		var compiledTemplate = this.template( this.model.toJSON() );
+		this.$el.html(compiledTemplate);
 	},
-
-	setPresentation: function(result) {
-    this.model = presentation;
+	setPresentation: function(userPresentation) {
+    this.model = userPresentation;
     this.render();
   },
-
+	setUser: function(user) {
+    this.model = user;
+    this.render();
+  },
 })

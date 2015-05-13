@@ -21,7 +21,7 @@ var restrictAccess = function(req, res, next) {
 };
 
 var authenticate = function(req, res, next) {
-  req.session.currentUser ? next() : res.status(400).send({err: 400, msg: 'LOGIN TROLL'});
+  req.session.currentUser ? next() : res.status(400).send({err: 400, msg: 'You need to login again to access this section.'});
 };
 
 userRouter.get("/", function(req, res) {
@@ -43,7 +43,7 @@ userRouter.get("/:id" , authenticate, restrictAccess, function(req, res) {
 	});
 });
 
-userRouter.get("/:id/presentation" , authenticate, restrictAccess, function(req, res) {
+userRouter.get("/:id/presentations" , authenticate, restrictAccess, function(req, res) {
   User.findOne({
     where: { id: req.params.id },
     include: [Presentation]

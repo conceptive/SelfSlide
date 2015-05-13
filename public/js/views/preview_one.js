@@ -1,5 +1,5 @@
 App.Views.PreviewOne = Backbone.View.extend({
-	el: '#preview-wrapper',
+	el: '#app-wrapper',
 
 	initialize: function() {
 		this.template = Handlebars.compile($('#preview-one-template').html());
