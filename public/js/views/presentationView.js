@@ -1,5 +1,5 @@
 App.Views.PresentationView = Backbone.View.extend({
-	el: '#user-presentation',
+	el: '#app-wrapper',
 
 	initialize: function() {
 		this.template = Handlebars.compile( $('#presentation-template').html() );
@@ -7,6 +7,10 @@ App.Views.PresentationView = Backbone.View.extend({
 	render: function() {
 		var compiledTemplate = this.template( this.model.toJSON() );
 		this.$el.html(compiledTemplate);
+		console.log('showing presentation');
+		Reveal.initialize({
+			history: true		// Every slide will change the URL
+		});
 	},
 	setPresentation: function(userPresentation) {
     this.model = userPresentation;

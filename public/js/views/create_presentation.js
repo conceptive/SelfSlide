@@ -78,19 +78,11 @@ App.Views.CreatePresentation = Backbone.View.extend({
   },
 
   showPresentation: function(presentationData) {
+    this.$el.empty; 
     App.presentations.add(presentationData);
       App.presentationView.setPresentation( App.presentations.last() );
       var presentationID = presentationData.id;
       App.router.navigate("presentations/" + presentationID);
-
-    // presentationID = presentationData.id;
-    //  App.presentationView.fetch({
-    //   success: function() {
-    //     var presentation = App.presentationView.get(presentationID);
-    //   App.presentationView.setPresentation(presentation);
-    //   }
-    // });
-    // App.router.navigate("presentations/" + this.model.get('id') , {trigger: true, replace: true});
   
 
   }

@@ -9,25 +9,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       slide_1_bg: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       slide_1_text: {
         type: Sequelize.TEXT
       },
       slide_2_bg: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       slide_2_text: {
         type: Sequelize.TEXT
       },
       slide_3_bg: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       slide_3_text: {
         type: Sequelize.TEXT
       },
       slide_4_bg: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       slide_4_text: {
@@ -35,7 +35,7 @@ module.exports = {
         allowNull: true
       },
       slide_5_bg: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       slide_5_text: {
@@ -43,7 +43,7 @@ module.exports = {
         allowNull: true
       },
       slide_6_bg: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       slide_6_text: {
@@ -51,7 +51,7 @@ module.exports = {
         allowNull: true
       },
       slide_7_bg: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       slide_7_text: {
@@ -59,7 +59,7 @@ module.exports = {
         allowNull: true
       },
       slide_8_bg: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       slide_8_text: {
