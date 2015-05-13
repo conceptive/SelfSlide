@@ -7,7 +7,7 @@ var application_root   = __dirname,
 		bcrypt             = require("bcrypt"),
   	request			       = require("request"),
   	session            = require("express-session"),
-  	presentationRouter        = require('./routers/presentation_router.js'),
+  	presentationRouter = require('./routers/presentation_router.js'),
     userRouter         = require('./routers/user_router.js');
 
 var User = models.users;
@@ -73,7 +73,7 @@ app.post('/sessions', function(req, res) {
         bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
           if (result) {
             req.session.currentUser = user.id;
-            res.send('Correct credentials!!');
+            res.send(user);
           } else {
             res.status(400);
             res.send({

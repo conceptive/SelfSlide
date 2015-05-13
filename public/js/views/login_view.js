@@ -1,30 +1,24 @@
 App.Views.LoginPopup = Backbone.View.extend({
-	el: '#login-popup',
+	el: '#app-wrapper',
 
-	initialize: function() {
-    this.loginTemplate = Handlebars.compile($('#login-template').html());
+	initialize: function() { 
+    this.loginTemplate = Handlebars.compile( $('#login-template').html() );
   },
-
 	render: function() {
     this.$el.html(this.loginTemplate);
-    console.log('login popup')
+    console.log('login popup');
 	},
-
 	events: {
 		'click #login-btn': 'login',
 		'click #create-account-btn': 'signup',
-    'click #close-btn': 'hidePopup'
 	},
-
 	showPopup: function() {
     this.$el.fadeIn(1000);
   },
-
   hidePopup: function() {
-    this.$el.fadeOut(500);
-    App.router.navigate("create_presentation", {trigger: true, replace: true})
+    this.$el.empty; 
+    // App.router.navigate("preview_one", {trigger: true, replace: true})
   },
-
 	login: function(){
     var username = $('#login-username').val();
     var password = $('#login-password').val();
@@ -39,11 +33,12 @@ App.Views.LoginPopup = Backbone.View.extend({
         alert(err.err + ' - ' + err.msg);
     });
   },
-
-  renderSession: function() {
+  renderSession: function(userData) {
+    var currentUser = new App.Models.User(userData);
+    App.createPresentation = new App.Views.CreatePresentation({model: currentUser});
+    App.createPresentation.render();
     // App.router.navigate("home", {trigger: true})
   },
-
   signup: function() {
     var username = $('#create-username').val();
     var password = $('#create-password').val();

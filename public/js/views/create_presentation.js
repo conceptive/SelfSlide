@@ -1,13 +1,14 @@
 App.Views.CreatePresentation = Backbone.View.extend({
-	el: '#create-wrapper',
+	el: '#app-wrapper',
 
 	initialize: function() {
 		this.template = Handlebars.compile($('#create-presentation-template').html());
-		this.render()
+		this.render();
 	},
 	
 	render: function() {
-		this.$el.html(this.template);
+    var compiledTemplate = this.template( this.model.toJSON() );
+		this.$el.html(compiledTemplate);
 		console.log('create presentation')
 	},
 
@@ -19,12 +20,10 @@ App.Views.CreatePresentation = Backbone.View.extend({
 
   showModal: function() {
     this.$el.fadeIn(200);
-    $('body').css('overflow','hidden')
   },
 
   hideModal: function() {
     this.$el.fadeOut(200);
-    $('body').css('overflow','scroll')
   },
 
   getValues: function() {
@@ -75,11 +74,24 @@ App.Views.CreatePresentation = Backbone.View.extend({
   			slide_10_text: slide10txt,
   		}
   	}).done(this.showPresentation.bind(this));
-  	console.log('got them values')
+    
   },
 
-  showPresentation: function(presentation) {
-  	alert('presentation created');
-    App.router.navigate("showPresentation", {trigger: true, replace: true})
+  showPresentation: function(presentationData) {
+    App.presentations.add(presentationData);
+      App.presentationView.setPresentation( App.presentations.last() );
+      var presentationID = presentationData.id;
+      App.router.navigate("presentations/" + presentationID);
+
+    // presentationID = presentationData.id;
+    //  App.presentationView.fetch({
+    //   success: function() {
+    //     var presentation = App.presentationView.get(presentationID);
+    //   App.presentationView.setPresentation(presentation);
+    //   }
+    // });
+    // App.router.navigate("presentations/" + this.model.get('id') , {trigger: true, replace: true});
+  
+
   }
 });
