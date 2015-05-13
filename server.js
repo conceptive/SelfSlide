@@ -9,7 +9,7 @@ var application_root   = __dirname,
   	session            = require("express-session"),
   	presentationRouter = require('./routers/presentation_router.js'),
     userRouter         = require('./routers/user_router.js');
-
+    
 var User = models.users;
 var app  = express();
 var secret = 'mck';
