@@ -59,7 +59,7 @@
 	<template id="header-template">
 		<div id="header">
 		<nav id="top-menu">
-			<p>Welcome, {{this.name}}.</p>
+			<p>Welcome, <span class="welcome"> {{this.name}}. </span></p>
 			<a class="nav-login">Login</a>
 		</nav>
 		</div>
@@ -98,25 +98,39 @@
 </template>
 
 <template id="create-presentation-template">
+
 	<div id="create-inner-wrapper">
-		<h2>Welcome, {{this.name}}.</h2>
+		<h2 class="welcome-name">Welcome, <span class="welcome"> {{this.name}}. </span><a id="logout" href="#">(logout)</a></h2>
+		
+		<div class="clear"></div>
 		<h1 align="center">CREATE PRESENTATION</h1>
-		<br />
+		<div class="divider"></div>
 	<form>
-		<h2>First Slide - Background (URL)</h2>
-		<input type="text" name="slide1bg" id="edit-s1-bg" placeholder="www.google.com/bg.png"/>
-		<h2>First Slide - Text</h2>
-		<input type="text" name="slide1txt" id="edit-s1-txt" placeholder="I like stuff"/>
-		<div class="divider"></div>
-		<h2>Second Slide - Background (URL)</h2>
-		<input type="text" name="slide2bg" id="edit-s2-bg" placeholder="www.google.com/bg.png"/>
-		<h2>Second Slide - Text</h2>
-		<input type="text" name="slide2txt" id="edit-s2-txt" placeholder="I like stuff"/>
-		<div class="divider"></div>
-		<h2>Third Slide - Background (URL)</h2>
-		<input type="text" name="slide3bg" id="edit-s3-bg" placeholder="www.google.com/bg.png"/>
-		<h2>Third Slide - Text</h2>
-		<input type="text" name="slide3txt" id="edit-s3-txt" placeholder="I like stuff"/>
+		<h2>➀ Your First Slide </h2>
+		<h3>Background (URL or Color)</h3>
+		<input type="text" name="slide1bg" id="edit-s1-bg" placeholder="pokemon.png, red, #36D7B7"/>
+		<h3>Your Text</h3>
+		<textarea rows="10" cols="50" name="slide1txt" id="edit-s1-txt" placeholder="I like stuff"></textarea>
+		<div class="clear"></div>
+		<div class="clear"></div>
+		<h2>➁ Your Second Slide </h2>
+		<h3>Background (URL or Color)</h3>
+		<input type="text" name="slide2bg" id="edit-s2-bg" placeholder="pokemon.png, red, #36D7B7"/>
+		<h3>Your Text</h3>
+		<textarea rows="10" cols="50" name="slide2txt" id="edit-s2-txt" placeholder="I like stuff"></textarea>		<div class="clear"></div>
+		<div class="clear"></div>
+		<h2>➂ Your Third Slide </h2>
+		<h3>Background (URL or Color)</h3>
+		<input type="text" name="slide3bg" id="edit-s3-bg" placeholder="pokemon.png, red, #36D7B7"/>
+		<h3>Your Text</h3>
+		<textarea rows="10" cols="50" name="slide3txt" id="edit-s3-txt" placeholder="I like stuff"></textarea>
+		<div class="clear"></div>
+		<div class="clear"></div>
+		<h2>➃ Your Fourth Slide </h2>
+		<h3>Background (URL)</h3>
+		<input type="text" name="slide4bg" id="edit-s4-bg" placeholder="www.google.com/bg.png"/>
+		<h3>Your Text</h3>
+		<textarea rows="10" cols="50" name="slide4txt" id="edit-s4-txt" placeholder="I like stuff"></textarea>
 <!-- 		<h2>Fourth Slide - Background (URL)</h2>
 		<input type="text" name="slide4bg" id="edit-s4-bg" placeholder="www.google.com/bg.png"/>
 		<div class="divider"></div>
@@ -147,29 +161,25 @@
 
 <template id="login-template">
 	<div id="login-window">
-		<h1 align="center">SelfSlide</h1>
+		<a href="#" id="close-btn">X</a>
+<!-- 		<h1 align="center">SelfSlide</h1> -->
 		<div id="login-wrapper">
 			<div id="login-box">
-				<h2>Have an account? Login</h2>
-				<h4>Username</h4> 
-				<input type="text" id="login-username" placeholder="username">
-				<h4>Password</h4> 
-		    <input type="password" id="login-password" placeholder="password">
+				<h2>Have an account?</h2>
+				<input type="text" id="login-username" placeholder="Username">
+		    <input type="password" id="login-password" placeholder="Password">
 		    <button type="button" id="login-btn">Log In</button>
 		   </div>
 
 			<div id="create-account-box">
 				<h2>Create Account</h2>
-				<h4>Username</h4> 
-		    <input type="text" id="create-username" placeholder="username">
-		    <h4>Password</h4> 
-		    <input type="password" id="create-password" placeholder="password">
-		    <h4>Name</h4> 
+		    <input type="text" id="create-username" placeholder="Username">
+		    <input type="password" id="create-password" placeholder="Password">
 		    <input type="text" id="create-name" placeholder="Name">
-		    <h4>Email</h4> 
+<!-- 		<h4>Email</h4> 
 		    <input type="text" id="create-email" placeholder="Email">
 		    <h4>Phone</h4> 
-		    <input type="text" id="create-phone" placeholder="Phone #">
+		    <input type="text" id="create-phone" placeholder="Phone #"> -->
 		    <button type="button" id="create-account-btn">Sign Up</button>
 	  	</div>
 		</div>
@@ -190,20 +200,19 @@
 
 	<div class="reveal">
 		<div class="slides">
-			<section data-background="{{ slide_1_bg }}"> {{ slide_1_text }} </section>
-			<section>
-				<section data-background="{{ slide_2_bg }}"> {{ slide_2_text }}  </section>
-				<section data-background=" {{ slide_3_bg }} "> {{ slide_3_text }} </section>
-				<section data-background="  {{ slide_4_bg }}  "> {{ slide_4_text }} </section>
-			</section>
-			<section data-background=" {{ slide_5_bg }} "> {{ slide_5_text }} </section>
-			<section>
-				<section data-background=" {{ slide_6_bg }} "> {{ slide_6_text }} </section>
-			<section data-background=" {{ slide_7_bg }} "> {{ slide_7_text }} </section>
-				<section data-background=" {{ slide_8_bg }} ">
-					<h1> {{ slide_8_text }} </h1>
-				</section>
-			</section>
+		<section>
+			<section data-background=" {{ slide_1_bg }}" > {{ slide_1_text }} </section>
+			<section data-background=" {{ slide_2_bg }}" > {{ slide_2_text }} </section>
+		</section>
+		<section>
+			<section data-background=" {{ slide_3_bg }}" > {{ slide_3_text }} </section>
+			<section data-background=" {{ slide_4_bg }}" > {{ slide_4_text }} </section>
+		</section>
+		<!-- 	<section data-background=" {{ slide_5_bg }}" > {{ slide_5_text }} </section>
+			<section data-background=" {{ slide_6_bg }}" > {{ slide_6_text }} </section>
+			<section data-background=" {{ slide_7_bg }}" > {{ slide_7_text }} </section>
+			<section data-background=" {{ slide_8_bg }}" > {{ slide_8_text }} </section> -->
+		</section>
 	 	</div>
 	</div>
 </div>

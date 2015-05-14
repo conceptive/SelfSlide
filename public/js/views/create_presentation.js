@@ -15,7 +15,8 @@ App.Views.CreatePresentation = Backbone.View.extend({
 	events: {
     'click #close-editor': 'hideModal',
     'click #edit-btn': 'render',
-    'click #create-btn': 'getValues'
+    'click #create-btn': 'getValues',
+    'click #logout': 'logOut'
   },
 
   showModal: function() {
@@ -24,6 +25,11 @@ App.Views.CreatePresentation = Backbone.View.extend({
 
   hideModal: function() {
     this.$el.fadeOut(200);
+  },
+
+  logOut: function() {
+    App.home = new App.Views.Home();
+    App.home.render();
   },
 
   getValues: function() {

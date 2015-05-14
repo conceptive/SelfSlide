@@ -11,13 +11,18 @@ App.Views.LoginPopup = Backbone.View.extend({
 	events: {
 		'click #login-btn': 'login',
 		'click #create-account-btn': 'signup',
+    'click #close-btn': 'backHome'
 	},
 	showPopup: function() {
     this.$el.fadeIn(1000);
   },
   hidePopup: function() {
-    this.$el.empty; 
-    // App.router.navigate("preview_one", {trigger: true, replace: true})
+    this.$el.empty;
+  },
+
+  backHome: function() {
+    App.home = new App.Views.Home();
+    App.home.render();
   },
 	login: function(){
     var username = $('#login-username').val();

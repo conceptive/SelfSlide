@@ -29,7 +29,7 @@ h3 {
 
 code {
   font-size: 14px;
-  color: red;
+  color: #E26A6A;
   vertical-align: top;
   font-weight: bold
 }
@@ -48,6 +48,14 @@ input {
   border-radius: 0;
   text-align: center;
 
+}
+
+textarea {
+  resize: none;
+  font-size: 22px;
+  padding:5px;
+  margin: 0 0 20px 0;
+  border-radius: 5px
 }
 
 input:focus, textarea:focus, button:focus {
@@ -70,18 +78,18 @@ input[type=button] {
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #555;
+    color:    #67809F;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #555;
+   color:    #67809F;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #555;
+   color:    #67809F;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-   color:    #555;
+   color:    #67809F;
 }
 
 button {
@@ -97,7 +105,20 @@ button {
 }
 
 button:hover {
-  background: #F64747;
+  background: #d76868;
+}
+
+input[type=text],
+input[type=password] {
+  font-size: 30px;
+  color: #ccc;
+  background: #22313F;
+  border-bottom: 5px solid #34495E
+}
+
+.clear: {
+  clear: both;
+  margin: 100px 0;
 }
 
 .divider {
@@ -126,30 +147,56 @@ button:hover {
   width: 1200px;
   height: auto;
   margin: 0 auto;
-  border: solid 2px #eee;
+
 }
 
 #login-box {
 	display: block;
 	width: 45%;
-	height: 600px;
+	height: 500px;
   padding: 20px;
   margin-top: 20px;
 	float: left;
 }
 
+#login-box h4 {
+  font-size: 20px;
+}
+
 #create-account-box {
 	display: block;
 	width: 45%;
-	height: 600px;
+	height: 500px;
 	padding: 20px;
   float: right;
   margin-top: 20px;
   border-left: solid 2px #eeeeee;
+
+}
+
+#create-account-btn {
+  margin-top: 40px
+}
+
+#login-btn {
+  margin-top: 130px;
 }
 
 #close-btn {
+  position: absolute;
+  font-size: 20px;
+  padding: 6px;
+  right: 2%;
+  top: 5%;
+  color: #fff;
+  border-radius: 25%;
+  border: 2px solid #ccc;
   float: right;
+  text-decoration: none
+}
+
+#close-btn:hover {
+  color: #d76868;
 }
 
 #session {
@@ -231,25 +278,58 @@ button:hover {
   padding: 50px;
   position: fixed;
   height: 90%;
-  width: 93%;
+  width: 95%;
   overflow: scroll;
   background: #22313F;
   margin: 0 auto;
 }
 
 #create-inner-wrapper h1 {
-  font-size: 80px
+  font-size: 80px;
+  margin: 20px 0;
 }
 
 #create-inner-wrapper h2 {
-  font-size: 40px
+  color: #E26A6A;
+  font-size: 40px;
+  margin: 22px 4px;
 }
+
+#create-inner-wrapper .welcome-name {
+  color: #fff;
+  margin: 0;
+  font-size: 50px
+}
+
+#create-inner-wrapper .welcome-name a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+    vertical-align: middle;
+}
+
+#create-inner-wrapper h3 {
+  margin: 12px 0;
+  padding-top: 20px;
+
+}
+
+.divider {
+  border-bottom: 5px solid #ccc;
+  width: 900px;
+  margin: 0 auto 50px;
+}
+
 
 #create-btn {
   position: fixed;
   bottom: 10px; 
   left: 6px;
   font-size: 24px;
+}
+
+.welcome {
+  color: #E26A6A;
 }
 
 /*REVEAL TEST STUFF*/

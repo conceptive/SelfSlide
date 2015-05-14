@@ -13,7 +13,7 @@ var application_root   = __dirname,
 var User = models.users;
 var app  = express();
 var secret = 'mck';
-var port = process.env.PORT || 8080;
+var port = 8080;
 var io = require('socket.io').listen(app.listen(port));
 
 // Initialize a new socket.io application
