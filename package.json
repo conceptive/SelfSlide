@@ -23,7 +23,7 @@
   "scripts": {
     "start": "bin/www"
   },
-  "main": "server.js",
+  "main": "bin/www",
   "author": "",
   "license": "ISC",
   "description": "",
