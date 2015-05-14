@@ -18,8 +18,7 @@ body {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   font-size: 38px;
   font-weight: normal;
-  color: #fff; 
-  z-index: 9999999999
+  color: #fff;
 }
 
 ::selection {

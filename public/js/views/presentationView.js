@@ -9,7 +9,7 @@ App.Views.PresentationView = Backbone.View.extend({
 		this.$el.html(compiledTemplate);
 		console.log('showing presentation');
 		Reveal.initialize({
-			history: true		// Every slide will change the URL
+			history: true
 		});
 	},
 	setPresentation: function(userPresentation) {

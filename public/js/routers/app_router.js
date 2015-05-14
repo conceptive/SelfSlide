@@ -5,9 +5,6 @@ App.Routers.Main = Backbone.Router.extend({
 		App.home = new App.Views.Home();
 		App.home.render();
 
-		App.topBar = new App.Views.TopBar();
-		App.topBar.render();
-
 		App.loginPopup = new App.Views.LoginPopup();
 
 		App.presentations = new App.Collections.UserPresentations();

@@ -3,12 +3,15 @@ App.Views.PreviewOne = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = Handlebars.compile($('#preview-one-template').html());
-		this.render()
 		console.log('preview here')
 	},
 	
 	render: function() {
 		this.$el.html(this.template);
+			console.log('showing presentation');
+			Reveal.initialize({
+				history: true
+		});
 	},
 
 	hide: function() {
@@ -17,8 +20,17 @@ App.Views.PreviewOne = Backbone.View.extend({
 
 	showLogin: function() {
 		Backbone.history.navigate("login", {trigger: true});
-		// this.hide();
 	},
+
+	setPresentation: function(userPresentation) {
+    this.model = userPresentation;
+    this.render();
+  },
+
+	setUser: function(user) {
+    this.model = user;
+    this.render();
+  },
 
 	events: {
 		"click #get-started-btn": "showLogin"

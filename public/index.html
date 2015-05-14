@@ -37,8 +37,9 @@
 	<script src="/socket.io/socket.io.js"></script>
 
 </head>
-
+<a href="/" id="logo">SelfSlide <code>Beta</code></a>
 <body>
+	
 	<div id="topbar-container"></div>
 	<div id="app-wrapper"></div>
 	
@@ -56,8 +57,8 @@
 
 	<template id="header-template">
 		<div id="header">
-		<a href="/" id="logo">SelfSlide <code>Beta</code></a>
 		<nav id="top-menu">
+			<p>Welcome, {{this.name}}.</p>
 			<a class="nav-login">Login</a>
 		</nav>
 		</div>
@@ -74,6 +75,8 @@
 		<input type="text" placeholder="Type in 'mck' "/>
 		<input type="submit" value="➡"/>
 	</form>
+	<div class="reveal">
+		<div class="slides">
 			<section data-background="images/1.jpg">Swag Swag Swag</section>
 			<section>
 				<section data-background="images/2.jpg">Presentations and Shit</section>
@@ -174,8 +177,7 @@
 
 <template id="presentation-template">
 	<div id="popup">
-		<h1> Presentation Goes Here</h1>
-	<!-- <form class="login">
+<!-- 	<form class="login">
 		<h1> HOW IT WORKS</h1>
 		<span>Step 1: Go to www.selfslide.com/preview/ on your mobile device.</span><br />
 		<span>Step 2: Type in 'mck' as your secret key for both devices.</span><br />
