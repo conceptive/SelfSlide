@@ -5,8 +5,8 @@ App.Views.LoginPopup = Backbone.View.extend({
     this.loginTemplate = Handlebars.compile( $('#login-template').html() );
   },
 	render: function() {
+    this.$el.empty;
     this.$el.html(this.loginTemplate);
-    console.log('login popup');
 	},
 	events: {
 		'click #login-btn': 'login',
@@ -41,7 +41,8 @@ App.Views.LoginPopup = Backbone.View.extend({
   renderSession: function(userData) {
     var currentUser = new App.Models.User(userData);
     App.createPresentation = new App.Views.CreatePresentation({model: currentUser});
-    App.createPresentation.render();
+    Backbone.history.navigate("create", true);
+    // App.createPresentation.render();
     // App.router.navigate("home", {trigger: true})
   },
   signup: function() {
