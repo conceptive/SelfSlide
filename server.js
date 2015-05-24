@@ -16,25 +16,27 @@ var secret = 'mck';
 var port = process.env.PORT || 8080;
 var io = require('socket.io').listen(app.listen(port));
 
-// Initialize a new socket.io application
-var presentation = io.on('connection', function (socket) {
-  socket.on('load', function(data){
-    socket.emit('access', {
-      access: (data.key === secret ? "granted" : "denied")
-    });
-  });
+// var presentation = io.on('connection', function (socket) {
+//   // A new client has come online. Check the secret key and 
+//   // emit a "granted" or "denied" message.
+//   socket.on('load', function(data){
 
-  socket.on('slide-changed', function(data){
-      // Check the secret key again
-      if(data.key === secret) {
+//     socket.emit('access', {
+//       access: (data.key === secret ? "granted" : "denied")
+//     });
+//   });
 
-        // Tell all connected clients to navigate to the new slide
-        presentation.emit('navigate', {
-          hash: data.hash
-        });
-      }
-  });
-});
+//   socket.on('slide-changed', function(data){
+//     // Check the secret key again
+//     if(data.key === secret) {
+      
+//       // Tell all connected clients to navigate to the new slide
+//       presentation.emit('navigate', {
+//         hash: data.hash
+//       });
+//     };
+//   });
+// });
 
 // Server Configuration
 app.use( logger('dev') );

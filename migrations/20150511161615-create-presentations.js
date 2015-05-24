@@ -11,10 +11,16 @@ module.exports = {
       slide_1_bg: {
         type: Sequelize.TEXT
       },
+      slide_1_title: {
+        type: Sequelize.TEXT
+      },
       slide_1_text: {
         type: Sequelize.TEXT
       },
       slide_2_bg: {
+        type: Sequelize.TEXT
+      },
+      slide_2_title: {
         type: Sequelize.TEXT
       },
       slide_2_text: {
@@ -23,10 +29,17 @@ module.exports = {
       slide_3_bg: {
         type: Sequelize.TEXT
       },
+      slide_3_title: {
+        type: Sequelize.TEXT
+      },
       slide_3_text: {
         type: Sequelize.TEXT
       },
       slide_4_bg: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
+      slide_4_title: {
         type: Sequelize.TEXT,
         allowNull: true
       },
@@ -38,11 +51,19 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true
       },
+      slide_5_title: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       slide_5_text: {
         type: Sequelize.TEXT,
         allowNull: true
       },
       slide_6_bg: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
+      slide_6_title: {
         type: Sequelize.TEXT,
         allowNull: true
       },
@@ -54,11 +75,19 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true
       },
+      slide_7_title: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
       slide_7_text: {
         type: Sequelize.TEXT,
         allowNull: true
       },
       slide_8_bg: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
+      slide_8_title: {
         type: Sequelize.TEXT,
         allowNull: true
       },

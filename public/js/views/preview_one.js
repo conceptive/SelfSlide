@@ -10,7 +10,7 @@ App.Views.PreviewOne = Backbone.View.extend({
 		this.$el.html(this.template);
 			console.log('showing presentation');
 			Reveal.initialize({
-				history: true
+				history: false
 		});
 	},
 
@@ -19,7 +19,8 @@ App.Views.PreviewOne = Backbone.View.extend({
 	},
 
 	showLogin: function() {
-		Backbone.history.navigate("login", {trigger: true});
+		$('.reveal').empty();
+		Backbone.history.navigate("login", true);
 	},
 
 	setPresentation: function(userPresentation) {

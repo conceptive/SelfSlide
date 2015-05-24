@@ -5,19 +5,24 @@ App.Views.LoginPopup = Backbone.View.extend({
     this.loginTemplate = Handlebars.compile( $('#login-template').html() );
   },
 	render: function() {
+    this.$el.empty;
     this.$el.html(this.loginTemplate);
-    console.log('login popup');
 	},
 	events: {
 		'click #login-btn': 'login',
 		'click #create-account-btn': 'signup',
+    'click #close-btn': 'backHome'
 	},
 	showPopup: function() {
     this.$el.fadeIn(1000);
   },
   hidePopup: function() {
-    this.$el.empty; 
-    // App.router.navigate("preview_one", {trigger: true, replace: true})
+    this.$el.empty;
+  },
+
+  backHome: function() {
+    App.home = new App.Views.Home();
+    App.home.render();
   },
 	login: function(){
     var username = $('#login-username').val();
@@ -36,7 +41,8 @@ App.Views.LoginPopup = Backbone.View.extend({
   renderSession: function(userData) {
     var currentUser = new App.Models.User(userData);
     App.createPresentation = new App.Views.CreatePresentation({model: currentUser});
-    App.createPresentation.render();
+    Backbone.history.navigate("create", true);
+    // App.createPresentation.render();
     // App.router.navigate("home", {trigger: true})
   },
   signup: function() {
