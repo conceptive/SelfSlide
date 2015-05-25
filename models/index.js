@@ -17,7 +17,6 @@ if (process.env.HEROKU_POSTGRESQL_DATABASE_URL) {
     var sequelize = new Sequelize(config.database, config.username, config.password, config);
   }
 
-
 var db        = {};
 
 fs
