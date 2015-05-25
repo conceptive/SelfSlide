@@ -1,18 +1,15 @@
 App.Views.CreatePresentation = Backbone.View.extend({
 	el: '#app-wrapper',
-
 	initialize: function() {
 		this.template = Handlebars.compile($('#create-presentation-template').html());
 		this.render();
 	},
-	
 	render: function() {
     var compiledTemplate = this.template( this.model.toJSON() );
 		this.$el.html(compiledTemplate);
 		$('.slide-box-1').fadeIn(200);
     $('#slide-1-btn').css('color', '#E26A6A')
 	},
-
 	events: {
     'click #close-editor': 'hideModal',
     'click #edit-btn': 'render',
@@ -27,76 +24,64 @@ App.Views.CreatePresentation = Backbone.View.extend({
     'click #slide-7-btn, #slide-6-next, #slide-8-prev': 'showSlideSeven',
     'click #slide-8-btn, #slide-7-next': 'showSlideEight',
   },
-
   showModal: function() {
     this.$el.fadeIn(200);
   },
-
   hideModal: function() {
     this.$el.fadeOut(200);
   },
-
   showSlideOne: function() {
     $('.slide-box-2, .slide-box-3, .slide-box-4, .slide-box-5, .slide-box-6, .slide-box-7, .slide-box-8').fadeOut(200);
     $('.slide-box-1').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-1-btn').css('color', '#E26A6A')
   },
-
   showSlideTwo: function() {
     $('.slide-box-1, .slide-box-3, .slide-box-4, .slide-box-5, .slide-box-6, .slide-box-7, .slide-box-8').fadeOut(200);
     $('.slide-box-2').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-2-btn').css('color', '#E26A6A')
   },
-
   showSlideThree: function() {
     $('.slide-box-1, .slide-box-2, .slide-box-4, .slide-box-5, .slide-box-6, .slide-box-7, .slide-box-8').fadeOut(200);
     $('.slide-box-3').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-3-btn').css('color', '#E26A6A')
   },
-
   showSlideFour: function() {
     $('.slide-box-1, .slide-box-2, .slide-box-3, .slide-box-5, .slide-box-6, .slide-box-7, .slide-box-8').fadeOut(200);
     $('.slide-box-4').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-4-btn').css('color', '#E26A6A')
   },
-
    showSlideFive: function() {
     $('.slide-box-1, .slide-box-2, .slide-box-3, .slide-box-4, .slide-box-6, .slide-box-7, .slide-box-8').fadeOut(200);
     $('.slide-box-5').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-5-btn').css('color', '#E26A6A')
   },
-
    showSlideSix: function() {
     $('.slide-box-1, .slide-box-2, .slide-box-3, .slide-box-4, .slide-box-5, .slide-box-7, .slide-box-8').fadeOut(200);
     $('.slide-box-6').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-6-btn').css('color', '#E26A6A')
   },
-
    showSlideSeven: function() {
     $('.slide-box-1, .slide-box-2, .slide-box-3, .slide-box-4, .slide-box-5, .slide-box-6, .slide-box-8').fadeOut(200);
     $('.slide-box-7').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-7-btn').css('color', '#E26A6A')
   },
-
    showSlideEight: function() {
     $('.slide-box-1, .slide-box-2, .slide-box-3, .slide-box-4, .slide-box-5, .slide-box-6, .slide-box-7').fadeOut(200);
     $('.slide-box-8').fadeIn(200);
     $('.slide-nav').css('color', '#eeeeee' );
     $('#slide-8-btn').css('color', '#E26A6A')
   },
-
   logOut: function() {
     App.home = new App.Views.Home();
     App.home.render();
   },
-
   getValues: function() {
   	var slide1bg = this.$el.find("#edit-s1-bg").val();
   	var slide1txt = this.$el.find("#edit-s1-txt").val();
@@ -153,16 +138,12 @@ App.Views.CreatePresentation = Backbone.View.extend({
   			slide_8_text: slide8txt,
   		}
   	}).done(this.showPresentation.bind(this));
-    
   },
-
   showPresentation: function(presentationData) {
     this.$el.empty; 
     App.presentations.add(presentationData);
       App.presentationView.setPresentation( App.presentations.last() );
       var presentationID = presentationData.id;
       App.router.navigate("presentations/" + presentationID, {trigger: true});
-  
-
   }
 });

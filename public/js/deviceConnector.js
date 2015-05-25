@@ -1,5 +1,4 @@
 $(function() {
-
 	var socket = io();
 	var form = $('form.login');
 	var secretTextBox = form.find('input[type=text]');
@@ -22,7 +21,6 @@ $(function() {
 		}
 
 	});
-
 	socket.on('access', function(data){
 
 		if(data.access === "granted") {
@@ -75,7 +73,5 @@ $(function() {
 
 			form.show();
 		}
-
 	});
-
 });
