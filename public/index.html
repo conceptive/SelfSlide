@@ -10,42 +10,15 @@
 	<link rel="stylesheet" href="js/lib/revealjs/css/theme/black.css" id="theme">
 	<link href='css/style.css' rel='stylesheet' type='text/css' />
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-
-	<script src="js/lib/revealjs/lib/js/head.min.js"></script>
-	<script src="js/lib/revealjs/js/reveal.js"></script>
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src='http://underscorejs.org/underscore-min.js'></script>
-  <script src="http://backbonejs.org/backbone-min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
-
-
-	<script src='js/app.js'></script>
-	<script src="js/routers/app_router.js"></script>
-	<script src="js/views/presentationView.js"></script>
-	<script src="js/views/home.js"></script>
-	<script src="js/models/user.js"></script>
-	<script src="js/models/userPresentation.js"></script>
-	<script src="js/views/login_view.js"></script>
-	<script src="js/views/preview_one.js"></script>
-	<script src="js/views/topbar.js"></script>
-	<script src="js/views/create_presentation.js"></script>
-	<script src="js/collections/users.js"></script>
-	<script src="js/collections/presentations.js"></script>
-	<script src="js/deviceConnector.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-
-
 </head>
-<a href="/" id="logo">SelfSlide <code>Beta</code></a>
 <body>
-	
+	<a href="/" id="logo">SelfSlide <code>Beta</code></a>
 	<div id="topbar-container"></div>
 	<div id="app-wrapper"></div>
 	
 	<!--============ TEMPLATES =============-->
-	
+
+	<!-- Home page -->
 	<template id="home-template">
 		<div id="video-background-overlay"></div>
 		<video autoplay loop id="video-background" muted>
@@ -61,6 +34,7 @@
 	</div>
 	</template>
 
+	<!-- Header -->
 	<template id="header-template">
 		<div id="header">
 		<nav id="top-menu">
@@ -70,247 +44,266 @@
 		</div>
 	</template>
 
-<template id="preview-one-template">
-	<p id="preview-txt">(Preview)</p>
-	<a href="#login" class="login-top-btn">Get Started <img src="/images/start.png"></a>
-	<div id="popup">
-	<!-- <form class="login">
-		<h1> HOW IT WORKS</h1>
-		<span>Step 1: Go to www.selfslide.com/preview/ on your mobile device.</span><br />
-		<span>Step 2: Type in 'mck' as your secret key for both devices.</span><br />
-		<span>Step 3: Start controlling the presentation with your phone!</span>
-		<h2 align="center">Secret Key <img src="https://cdn1.iconfinder.com/data/icons/jigsoar-icons/64/_key.png" width="42"></h2>
-		<input type="text" placeholder="Type in 'mck' "/>
-		<input type="submit" value="➡"/>
-	</form> -->
-	<div class="reveal">
-		<div class="slides">
-			<section data-background="images/preview/1.png"></section>
-			<section data-background="images/preview/6.png"><h1 style="text-shadow: 1px 2px #222">Market Research</h1></section>
-			<section data-background="images/preview/4.png"></section>
-			<section data-background="images/preview/7.png"></section>
-			<section data-background="#ea3a3d">
-				<h4>Passion, Persistence, Positivity, Productivity</h4>
-					<h2 style="font-size: 100px">vs</h2>
-				<h4>Price, Product, Place, Promotion</h4></section>
-			<section data-background="images/preview/5.png"><h1 style="text-shadow: 1px 2px #222">Be social, everywhere!</h1></section>
-				<section data-background="#703D6F">
-					<h1>Target audience</h1>
-					<p>How do you want your branding to make someone feel?</p>
-				</section>
-				<section data-background="#ECECEC">
-					<h1>Ready to Create your own Presentation?</h1>
-					<button type="button" id="get-started-btn">Get Started</button>
-				</section>
+	<!-- Presentation Preview -->
+	<template id="preview-one-template">
+			<p id="preview-txt">(Preview)</p>
+			<a href="#login" class="login-top-btn">Get Started <img src="/images/start.png"></a>
+		<div id="popup">
+			<!-- <form class="login">
+				<h1> HOW IT WORKS</h1>
+				<span>Step 1: Go to www.selfslide.com/preview/ on your mobile device.</span><br />
+				<span>Step 2: Type in 'mck' as your secret key for both devices.</span><br />
+				<span>Step 3: Start controlling the presentation with your phone!</span>
+				<h2 align="center">Secret Key <img src="https://cdn1.iconfinder.com/data/icons/jigsoar-icons/64/_key.png" width="42"></h2>
+				<input type="text" placeholder="Type in 'mck' "/>
+				<input type="submit" value="➡"/>
+			</form> -->
+			<div class="reveal">
+				<div class="slides">
+					<section data-background="images/preview/1.png"></section>
+					<section data-background="images/preview/6.png"><h1 style="text-shadow: 1px 2px #222">Market Research</h1></section>
+					<section data-background="images/preview/4.png"></section>
+					<section data-background="images/preview/7.png"></section>
+					<section data-background="#ea3a3d">
+						<h4>Passion, Persistence, Positivity, Productivity</h4>
+						<h2 style="font-size: 100px">vs</h2>
+						<h4>Price, Product, Place, Promotion</h4></section>
+					<section data-background="images/preview/5.png"><h1 style="text-shadow: 1px 2px #222">Be social, everywhere!</h1></section>
+					<section data-background="#703D6F">
+						<h1>Target audience</h1>
+						<p>How do you want your branding to make someone feel?</p>
+					</section>
+					<section data-background="#ECECEC">
+						<h1>Ready to Create your own Presentation?</h1>
+						<button type="button" id="get-started-btn">Get Started</button>
+					</section>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</template>
+	</template>
 
-<template id="create-presentation-template">
+	<!-- Build Presentation -->
+	<template id="create-presentation-template">
 		<h2 class="welcome-name">Welcome, <span class="welcome"> {{this.name}}. </span><a id="logout" href="#">(logout)</a></h2>
 		<div class="clear"></div>
 		<h1 class="create-title" align="center">CREATE YOUR PRESENTATION</h1>
 		<div class="divider"></div>
 		<ul id="slide-selector">
-		<h3>Select Slide</h3>
-		<li><a type="button" id="slide-1-btn" class="slide-nav">Slide 1</a></li>
-		<li><a type="button" id="slide-2-btn" class="slide-nav">Slide 2</a></li>
-		<li><a type="button" id="slide-3-btn" class="slide-nav">Slide 3</a></li>
-		<li><a type="button" id="slide-4-btn" class="slide-nav">Slide 4</a></li>
-		<li><a type="button" id="slide-5-btn" class="slide-nav">Slide 5</a></li>
-		<li><a type="button" id="slide-6-btn" class="slide-nav">Slide 6</a></li>
-		<li><a type="button" id="slide-7-btn" class="slide-nav">Slide 7</a></li>
-		<li><a type="button" id="slide-8-btn" class="slide-nav">Slide 8</a></li>
-	</ul>
-	<div id="create-inner-wrapper">
-		<form>
-			<!-- First Slide -->
-			<div class="slide-box-1">
-				<a type="button" id="slide-1-next"><img src="images/next.png"></a>
-				<h2>Your First Slide </h2>
-				<h3>Set Background (URL or Color)</h3>
-				<input type="text" name="slide1bg" id="edit-s1-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide1title" id="edit-s1-title" placeholder="Welcome to My Presentation"/>
-				<h3>Your Text</h3>
-				 <textarea rows="10" cols="50" name="slide1txt" id="edit-s1-txt" placeholder="Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!-- Second Slide -->
-			<div class="slide-box-2">
-				<a type="button" id="slide-2-next"><img src="images/next.png"></a>
-				<a type="button" id="slide-2-prev"><img src="images/prev.png"></a>
-				<h2>Your Second Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide2bg" id="edit-s2-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide2title" id="edit-s2-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide2txt" id="edit-s2-txt" placeholder="HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages. It is written in the form of HTML elements consisting of tags enclosed in angle brackets."></textarea><div class="clear"></div>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!-- Third Slide -->
-			<div class="slide-box-3">
-				<a type="button" id="slide-3-next"><img src="images/next.png"></a>
-				<a type="button" id="slide-3-prev"><img src="images/prev.png"></a>
-				<h2>Your Third Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide3bg" id="edit-s3-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide3title" id="edit-s3-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide3txt" id="edit-s3-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!-- Fourth Slide -->
-			<div class="slide-box-4">
-				<a type="button" id="slide-4-next"><img src="images/next.png"></a>
-				<a type="button" id="slide-4-prev"><img src="images/prev.png"></a>
-				<h2>Your Fourth Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide4bg" id="edit-s4-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide4title" id="edit-s4-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide4txt" id="edit-s4-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!-- Fifth Slide -->
-			<div class="slide-box-5">
-				<a type="button" id="slide-5-next"><img src="images/next.png"></a>
-				<a type="button" id="slide-5-prev"><img src="images/prev.png"></a>
-				<h2>Your Fifth Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide5bg" id="edit-s5-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide5title" id="edit-s5-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide5txt" id="edit-s5-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!-- Sixth Slide -->
-			<div class="slide-box-6">
-				<a type="button" id="slide-6-next"><img src="images/next.png"></a>
-				<a type="button" id="slide-6-prev"><img src="images/prev.png"></a>
-				<h2>Your Sixth Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide6bg" id="edit-s6-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide6title" id="edit-s6-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide6txt" id="edit-s6-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!-- Seventh Slide -->
-			<div class="slide-box-7">
-				<a type="button" id="slide-7-next"><img src="images/next.png"></a>
-				<a type="button" id="slide-7-prev"><img src="images/prev.png"></a>
-				<h2>Your Seventh Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide7bg" id="edit-s7-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide7title" id="edit-s7-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide7txt" id="edit-s7-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-				<!-- Eight Slide -->
-			<div class="slide-box-8">
-				<a type="button" id="slide-8-prev"><img src="images/prev.png"></a>
-				<h2>Your Eight Slide </h2>
-				<h3>Background (URL or Color)</h3>
-				<input type="text" name="slide8bg" id="edit-s8-bg" placeholder="image.png, red, #36D7B7"/>
-				<h3>Title</h3>
-				<input type="text" name="slide8title" id="edit-s8-title" placeholder="Some title"/>
-				<h3>Your Text</h3>
-				<textarea rows="10" cols="50" name="slide8txt" id="edit-s8-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-
-
-
-		</form>
-	</div>
-	<input type="button" value="Save & Preview" id="create-btn"/>
-	<p id="credits">© <a href="http://www.frankjuan.com" target="_blank">Frank Juan</a></p>
-</template>
-
-<template id="login-template">
-	<div id="login-window">
-		<a href="#" id="close-btn">X</a>
-		<div id="login-wrapper">
-			<div id="login-box">
-				<h2>Have an account?</h2>
-				<input type="text" id="login-username" placeholder="demo" value='demo'>
-		    <input type="password" id="login-password" placeholder="demo" value='demo'>
-		    <button type="button" id="login-btn">Log In</button>
-		   </div>
-
-			<div id="create-account-box">
-				<h2>Create Account</h2>
-		    <input type="text" id="create-username" placeholder="Username">
-		    <input type="password" id="create-password" placeholder="Password">
-		    <input type="text" id="create-name" placeholder="Name">
-<!-- 		<h4>Email</h4> 
-		    <input type="text" id="create-email" placeholder="Email">
-		    <h4>Phone</h4> 
-		    <input type="text" id="create-phone" placeholder="Phone #"> -->
-		    <button type="button" id="create-account-btn">Sign Up</button>
-	  	</div>
+			<h3>Select Slide</h3>
+			<li><a type="button" id="slide-1-btn" class="slide-nav">Slide 1</a></li>
+			<li><a type="button" id="slide-2-btn" class="slide-nav">Slide 2</a></li>
+			<li><a type="button" id="slide-3-btn" class="slide-nav">Slide 3</a></li>
+			<li><a type="button" id="slide-4-btn" class="slide-nav">Slide 4</a></li>
+			<li><a type="button" id="slide-5-btn" class="slide-nav">Slide 5</a></li>
+			<li><a type="button" id="slide-6-btn" class="slide-nav">Slide 6</a></li>
+			<li><a type="button" id="slide-7-btn" class="slide-nav">Slide 7</a></li>
+			<li><a type="button" id="slide-8-btn" class="slide-nav">Slide 8</a></li>
+		</ul>
+		<div id="create-inner-wrapper">
+			<form>
+				<!-- First Slide -->
+				<div class="slide-box-1">
+					<a type="button" id="slide-1-next"><img src="images/next.png"></a>
+					<h2>Your First Slide </h2>
+					<h3>Set Background (URL or Color)</h3>
+					<input type="text" name="slide1bg" id="edit-s1-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide1title" id="edit-s1-title" placeholder="Welcome to My Presentation"/>
+					<h3>Your Text</h3>
+					 <textarea rows="10" cols="50" name="slide1txt" id="edit-s1-txt" placeholder="Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- Second Slide -->
+				<div class="slide-box-2">
+					<a type="button" id="slide-2-next"><img src="images/next.png"></a>
+					<a type="button" id="slide-2-prev"><img src="images/prev.png"></a>
+					<h2>Your Second Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide2bg" id="edit-s2-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide2title" id="edit-s2-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide2txt" id="edit-s2-txt" placeholder="HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages. It is written in the form of HTML elements consisting of tags enclosed in angle brackets."></textarea><div class="clear"></div>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- Third Slide -->
+				<div class="slide-box-3">
+					<a type="button" id="slide-3-next"><img src="images/next.png"></a>
+					<a type="button" id="slide-3-prev"><img src="images/prev.png"></a>
+					<h2>Your Third Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide3bg" id="edit-s3-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide3title" id="edit-s3-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide3txt" id="edit-s3-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- Fourth Slide -->
+				<div class="slide-box-4">
+					<a type="button" id="slide-4-next"><img src="images/next.png"></a>
+					<a type="button" id="slide-4-prev"><img src="images/prev.png"></a>
+					<h2>Your Fourth Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide4bg" id="edit-s4-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide4title" id="edit-s4-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide4txt" id="edit-s4-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- Fifth Slide -->
+				<div class="slide-box-5">
+					<a type="button" id="slide-5-next"><img src="images/next.png"></a>
+					<a type="button" id="slide-5-prev"><img src="images/prev.png"></a>
+					<h2>Your Fifth Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide5bg" id="edit-s5-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide5title" id="edit-s5-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide5txt" id="edit-s5-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- Sixth Slide -->
+				<div class="slide-box-6">
+					<a type="button" id="slide-6-next"><img src="images/next.png"></a>
+					<a type="button" id="slide-6-prev"><img src="images/prev.png"></a>
+					<h2>Your Sixth Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide6bg" id="edit-s6-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide6title" id="edit-s6-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide6txt" id="edit-s6-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+				<!-- Seventh Slide -->
+				<div class="slide-box-7">
+					<a type="button" id="slide-7-next"><img src="images/next.png"></a>
+					<a type="button" id="slide-7-prev"><img src="images/prev.png"></a>
+					<h2>Your Seventh Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide7bg" id="edit-s7-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide7title" id="edit-s7-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide7txt" id="edit-s7-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+					<!-- Eight Slide -->
+				<div class="slide-box-8">
+					<a type="button" id="slide-8-prev"><img src="images/prev.png"></a>
+					<h2>Your Eight Slide </h2>
+					<h3>Background (URL or Color)</h3>
+					<input type="text" name="slide8bg" id="edit-s8-bg" placeholder="image.png, red, #36D7B7"/>
+					<h3>Title</h3>
+					<input type="text" name="slide8title" id="edit-s8-title" placeholder="Some title"/>
+					<h3>Your Text</h3>
+					<textarea rows="10" cols="50" name="slide8txt" id="edit-s8-txt" placeholder="JavaScript, also known as ECMAScript (the untrademarked name used for the standard), is a dynamic programming language.It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed."></textarea>
+					<div class="clear"></div>
+					<div class="clear"></div>
+				</div>
+			</form>
 		</div>
-	</div>
-</template>
+		<input type="button" value="Save & Preview" id="create-btn"/>
+		<p id="credits">© <a href="http://www.frankjuan.com" target="_blank">Frank Juan</a></p>
+	</template>
 
-<template id="presentation-template">
-	<div id="popup">
+	<!-- Login/Create Account -->
+	<template id="login-template">
+		<div id="login-window">
+			<a href="#" id="close-btn">X</a>
+			<div id="login-wrapper">
+				<div id="login-box">
+					<h2>Have an account?</h2>
+					<input type="text" id="login-username" placeholder="demo" value='demo'>
+			    <input type="password" id="login-password" placeholder="demo" value='demo'>
+			    <button type="button" id="login-btn">Log In</button>
+			   </div>
 
-	<!-- <form class="login">
-		<h2 align="center">Secret Key <img src="https://cdn1.iconfinder.com/data/icons/jigsoar-icons/64/_key.png" width="42"></h2>
-		<input type="text" placeholder="Type in 'mck' "/>
-		<input type="submit" value="➡"/>
-	</form> -->
+				<div id="create-account-box">
+					<h2>Create Account</h2>
+			    <input type="text" id="create-username" placeholder="Username">
+			    <input type="password" id="create-password" placeholder="Password">
+			    <input type="text" id="create-name" placeholder="Name">
+	<!-- 		<h4>Email</h4> 
+			    <input type="text" id="create-email" placeholder="Email">
+			    <h4>Phone</h4> 
+			    <input type="text" id="create-phone" placeholder="Phone #"> -->
+			    <button type="button" id="create-account-btn">Sign Up</button>
+		  	</div>
+			</div>
+		</div>
+	</template>
 
-	<div class="reveal">
-		<div class="slides">
-			<section data-background=" {{ slide_1_bg }}" >
-			<h2> {{ slide_1_title }} </h2>
-			 {{ slide_1_text }} </section>
-			<section data-background=" {{ slide_2_bg }}" > 
-			<h2> {{ slide_2_title }} </h2>
-				{{ slide_2_text }} </section>
-			<section data-background=" {{ slide_3_bg }}" > 
-			<h2> {{ slide_3_title }} </h2>
-				{{ slide_3_text }} </section>
-			<section data-background=" {{ slide_4_bg }}" >
-			<h2> {{ slide_4_title }} </h2>
-			 {{ slide_4_text }} </section>
-			<section data-background=" {{ slide_5_bg }}" >
-			<h2> {{ slide_5_title }} </h2>
-			 {{ slide_5_text }} </section>
-			<section data-background=" {{ slide_6_bg }}" >
-			<h2> {{ slide_6_title }} </h2>
-			 {{ slide_6_text }} </section>
-			<section data-background=" {{ slide_7_bg }}" >
-			<h2> {{ slide_7_title }} </h2>
-			 {{ slide_7_text }} </section>
-			<section data-background=" {{ slide_8_bg }}" >
-			<h2> {{ slide_8_title }} </h2>
-			 {{ slide_8_text }} </section>
-		</section>
-	 	</div>
-	</div>
-</div>
-</template>
+	<!-- User Presentation -->
+	<template id="presentation-template">
+		<div id="popup">
+		<!-- <form class="login">
+			<h2 align="center">Secret Key <img src="https://cdn1.iconfinder.com/data/icons/jigsoar-icons/64/_key.png" width="42"></h2>
+			<input type="text" placeholder="Type in 'mck' "/>
+			<input type="submit" value="➡"/>
+		</form> -->
+			<div class="reveal">
+				<div class="slides">
+					<section data-background=" {{ slide_1_bg }}" >
+					<h2> {{ slide_1_title }} </h2>
+					 {{ slide_1_text }} </section>
+					<section data-background=" {{ slide_2_bg }}" > 
+					<h2> {{ slide_2_title }} </h2>
+						{{ slide_2_text }} </section>
+					<section data-background=" {{ slide_3_bg }}" > 
+					<h2> {{ slide_3_title }} </h2>
+						{{ slide_3_text }} </section>
+					<section data-background=" {{ slide_4_bg }}" >
+					<h2> {{ slide_4_title }} </h2>
+					 {{ slide_4_text }} </section>
+					<section data-background=" {{ slide_5_bg }}" >
+					<h2> {{ slide_5_title }} </h2>
+					 {{ slide_5_text }} </section>
+					<section data-background=" {{ slide_6_bg }}" >
+					<h2> {{ slide_6_title }} </h2>
+					 {{ slide_6_text }} </section>
+					<section data-background=" {{ slide_7_bg }}" >
+					<h2> {{ slide_7_title }} </h2>
+					 {{ slide_7_text }} </section>
+					<section data-background=" {{ slide_8_bg }}" >
+					<h2> {{ slide_8_title }} </h2>
+					 {{ slide_8_text }} </section>
+					</section>
+			 	</div>
+			</div>
+		</div>
+	</template>
 
-
+	<!-- Scripts -->
+	<script src="js/lib/revealjs/lib/js/head.min.js"></script>
+ 	<script src="js/lib/revealjs/js/reveal.js"></script>
+ 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+ 	<script src='http://underscorejs.org/underscore-min.js'></script>
+ 	<script src="http://backbonejs.org/backbone-min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+	<script src='js/app.js'></script>
+	<script src="js/routers/app_router.js"></script>
+	<script src="js/views/presentationView.js"></script>
+	<script src="js/views/home.js"></script>
+	<script src="js/models/user.js"></script>
+	<script src="js/models/userPresentation.js"></script>
+	<script src="js/views/login_view.js"></script>
+	<script src="js/views/preview_one.js"></script>
+	<script src="js/views/topbar.js"></script>
+	<script src="js/views/create_presentation.js"></script>
+	<script src="js/collections/users.js"></script>
+	<script src="js/collections/presentations.js"></script>
+	<script src="js/deviceConnector.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 </body>
 </html>
