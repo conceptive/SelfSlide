@@ -5,8 +5,8 @@ App.Views.LoginPopup = Backbone.View.extend({
     this.loginTemplate = Handlebars.compile( $('#login-template').html() );
   },
 	render: function() {
+    this.$el.empty;
     this.$el.html(this.loginTemplate);
-    console.log('login popup');
 	},
 	events: {
 		'click #login-btn': 'login',
@@ -19,7 +19,6 @@ App.Views.LoginPopup = Backbone.View.extend({
   hidePopup: function() {
     this.$el.empty;
   },
-
   backHome: function() {
     App.home = new App.Views.Home();
     App.home.render();
@@ -41,8 +40,7 @@ App.Views.LoginPopup = Backbone.View.extend({
   renderSession: function(userData) {
     var currentUser = new App.Models.User(userData);
     App.createPresentation = new App.Views.CreatePresentation({model: currentUser});
-    App.createPresentation.render();
-    // App.router.navigate("home", {trigger: true})
+    Backbone.history.navigate("create", true);
   },
   signup: function() {
     var username = $('#create-username').val();
@@ -55,12 +53,9 @@ App.Views.LoginPopup = Backbone.View.extend({
       name: name
     }).done(this.createUser.bind(this));
   },
-
   createUser: function() {
     $("#create-account-box").prepend("<h3>Account Created!</h3>")
     $("h3").attr("class", "on-create");
     $(".on-create").fadeOut(3000);
-        //$('#session').html(this.loginTemplate());
   },
-
 });

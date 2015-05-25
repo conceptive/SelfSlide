@@ -15,7 +15,7 @@ App.Views.Home = Backbone.View.extend ({
 	setUser: function(user) {
     this.model = user;
   },
-  getStarted: function() {
+  showPreview: function() {
     App.loginPopup = new App.Views.LoginPopup();
     App.loginPopup.render();
   },
@@ -27,6 +27,6 @@ App.Views.Home = Backbone.View.extend ({
   	this.$el.fadeOut(500);
   },
   events: {
-    "click #preview-one-btn": "getStarted"
+    "click #preview-one-btn": "showPreview"
   }
 })

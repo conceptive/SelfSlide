@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
-
+/*** Default ***/
 body {
 	background: #22313F;
 	color: #EEEEEE;
@@ -14,7 +14,11 @@ section {
 }
 
 h1 {
-	font-size: 100px
+  color: #fff;
+	font-size: 90px;
+  margin-bottom: 14px;
+  text-shadow: 1px 1px 1px #222;
+
 }
 
 h2 {
@@ -23,8 +27,9 @@ h2 {
 }
 
 h3 {
+  color: #fff;
   font-size: 30px;
-  text-shadow: 1px black;
+  text-shadow: 1px 1px 1px #222;
 }
 
 code {
@@ -38,7 +43,7 @@ input {
   display: block;
   margin: 10px auto;
   padding: 20px;
-  width: 40%;
+  width: 60%;
   border: none;
   border-bottom: 2px solid rgba(0,0,0,0.2);
   background-color: #ccc;
@@ -53,12 +58,20 @@ input {
 textarea {
   resize: none;
   font-size: 22px;
-  padding:5px;
+  padding:12px;
   margin: 0 0 20px 0;
-  border-radius: 5px
+  border-radius: 5px;
+  border: none;
+  background: #22313F;
+  color: #fff
 }
 
-input:focus, textarea:focus, button:focus {
+textarea:focus {
+  outline: none;
+  background: #2b3e4f
+}
+
+input:focus, button:focus {
     outline: none;
     background: #ccc;
     color: #22313F;
@@ -78,18 +91,18 @@ input[type=button] {
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #67809F;
+    color:    #ccc;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #67809F;
+   color:    #ccc;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #67809F;
+   color:    #ccc;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-   color:    #67809F;
+   color:    #ccc;
 }
 
 button {
@@ -127,6 +140,37 @@ input[type=password] {
   margin: 40px auto;
 }
 
+.login-top-btn {
+  position: fixed;
+  float: right;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 20px;
+  z-index: 100000;
+  text-decoration: none;
+}
+
+.login-top-btn:hover {
+  color: #E26A6A;
+}
+
+#preview-txt {
+  position: relative;
+  top: 10px;
+  margin: 0 auto;
+  z-index: 1000;
+  font-size: 20px;
+  color: #FAFBD5
+}
+
+#app-wrapper {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 /*** Login Page ***/
 
 #login-window {
@@ -147,7 +191,6 @@ input[type=password] {
   width: 1200px;
   height: auto;
   margin: 0 auto;
-
 }
 
 #login-box {
@@ -171,7 +214,6 @@ input[type=password] {
   float: right;
   margin-top: 20px;
   border-left: solid 2px #eeeeee;
-
 }
 
 #create-account-btn {
@@ -204,13 +246,6 @@ input[type=password] {
   color: white;
 }
 
-#app-wrapper {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
 /*** Home Page ***/
 
 #welcome {
@@ -220,17 +255,36 @@ input[type=password] {
   left: 0;
   z-index: 10000 !important;
   position: fixed;
-  background: url('../images/home.jpg');
-  background-size: cover
+
+}
+
+#video-background {
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
+#video-background-overlay {
+background-image: url(../images/bg_pattern.png); 
+position: fixed; 
+opacity: 0.8; 
+left: 0px; 
+top: 0px; 
+width: 100%; 
+height: 100%; 
+z-index: -1;
 }
 
 #inner-home-container {
   display: block;
-  width: 500px;
+  width: 900px;
   height: 500px;
-  margin: 0 auto;
-  padding: 100px;
-  float: right;
+  margin: 200px auto;
 }
 
 /*** Header Bar ***/
@@ -263,7 +317,7 @@ input[type=password] {
   font-size: 20px;
 }
 
-/*Account Popup */
+/*** Account Popup ***/
 #popup {
   position: fixed;
   z-index: 1;
@@ -274,52 +328,103 @@ input[type=password] {
   box-sizing: border-box;
 }
 
+/*** Create Presentation ***/
+
 #create-inner-wrapper {
-  padding: 50px;
-  position: fixed;
-  height: 90%;
-  width: 95%;
+  padding: 0 50px;
+  position: relative;
+  height: 80%;
+  width: 800px;
   overflow: scroll;
   background: #22313F;
   margin: 0 auto;
+  background: #ccc;
+  margin-bottom: 40px;
 }
 
-#create-inner-wrapper h1 {
-  font-size: 80px;
-  margin: 20px 0;
+.create-title {
+  font-size: 62px;
+  margin: 40px 0 10px 0;
 }
 
 #create-inner-wrapper h2 {
   color: #E26A6A;
-  font-size: 40px;
-  margin: 22px 4px;
+  font-size: 50px;
+  margin: 8px 4px 22px 4px;
 }
 
-#create-inner-wrapper .welcome-name {
+.welcome-name {
+  position: absolute;
   color: #fff;
   margin: 0;
-  font-size: 50px
+  font-size: 20px;
+  right: 0;
+  top: 0;
 }
 
-#create-inner-wrapper .welcome-name a {
+.welcome-name a {
   color: #fff;
   font-size: 20px;
   font-weight: 400;
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 #create-inner-wrapper h3 {
   margin: 12px 0;
   padding-top: 20px;
+}
 
+#create-inner-wrapper input[type=text] {
+  background: #22313F;
+  border: none;
+  color: #fff;
+  border-radius: 5px
+}
+
+#create-inner-wrapper input[type=text]:focus {
+  background: #2b3e4f
+}
+
+#create-inner-wrapper::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+#create-inner-wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+#create-inner-wrapper::-webkit-scrollbar-thumb {
+  background-color: #E26A6A;
+}
+
+#slide-selector {
+  float: left;
+  position: absolute;
+  left: 10px;
+  top: 30%;
+  border: 2px solid #fff;
+  padding: 10px;
+}
+
+#slide-selector li {
+  padding: 5px;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+#slide-selector li a {
+  cursor: pointer;
+}
+
+#slide-selector li a:hover {
+  color: #E26A6A;
 }
 
 .divider {
   border-bottom: 5px solid #ccc;
   width: 900px;
-  margin: 0 auto 50px;
+  margin: 0 auto 40px;
 }
-
 
 #create-btn {
   position: fixed;
@@ -328,22 +433,50 @@ input[type=password] {
   font-size: 24px;
 }
 
+.slide-nav {
+  color: #eeeeee;
+}
+
+.slide-box-1, .slide-box-2, .slide-box-3, .slide-box-4,
+.slide-box-5, .slide-box-6, .slide-box-7, .slide-box-8,
+.slide-box-9, .slide-box-10 {
+  display: none;
+  width: 800px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  padding: 20px 0;
+}
+
+#slide-1-next, #slide-2-next, #slide-3-next,
+#slide-4-next, #slide-5-next, #slide-6-next, 
+#slide-7-next {
+  position: absolute; 
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+#slide-2-prev, #slide-3-prev, #slide-4-prev,
+#slide-5-prev, #slide-6-prev, #slide-7-prev,
+#slide-8-prev {
+  position: absolute; 
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
 .welcome {
   color: #E26A6A;
 }
 
-/*REVEAL TEST STUFF*/
 /*-- Simple CSS Reset -- */
-
 
 * {
   padding: 0;
   margin: 0;
 }
 
-
 /* -- Header styles -- */
-
 
 .homebanner {
   display: none;
@@ -368,6 +501,17 @@ input[type=password] {
   color:white !important;
 }
 
+#credits {
+  position: absolute;
+  bottom: 14px;
+  right: 8px;
+}
+
+#credits a {
+  color: #86AC97;
+  text-decoration: none;
+}
+
 /* -- Slide styles -- */
 
 .slides section{
@@ -378,17 +522,16 @@ input[type=password] {
 
 
 form.login {
-  position: fixed;
 /*  top: 50%;*/
 /*  max-height: 140px;
   max-width: 390px;*/
-  width: 100%;
+  width: 500px;
 /*  left: 50%;*/
 /*  margin: -70px 0 0 -195px;*/
   margin: 0 auto;
   text-align: center;
   z-index: 100;
-  height: 100%;
+  height: auto;
   background-color: #eeeeee;
   border-radius: 5px;
   padding: 60px 0 0;

@@ -194,16 +194,20 @@ body {
   margin-top: 1px; }
 
 .reveal .controls div.navigate-left {
-  top: 42px;
+  position: fixed;
+  top: 50%;
+  left: 0;
   border-right-width: 22px;
-  border-right-color: #000; }
+  border-right-color: #000; 
+}
 
 .reveal .controls div.navigate-left.fragmented {
   opacity: 0.3; }
 
 .reveal .controls div.navigate-right {
-  left: 74px;
-  top: 42px;
+  position: fixed;
+  top: 50%;
+  right: 0;
   border-left-width: 22px;
   border-left-color: #000; }
 
@@ -211,6 +215,7 @@ body {
   opacity: 0.3; }
 
 .reveal .controls div.navigate-up {
+  display: none;
   left: 42px;
   border-bottom-width: 22px;
   border-bottom-color: #000; }
@@ -219,6 +224,7 @@ body {
   opacity: 0.3; }
 
 .reveal .controls div.navigate-down {
+  display: none;
   left: 42px;
   top: 74px;
   border-top-width: 22px;

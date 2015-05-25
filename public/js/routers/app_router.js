@@ -15,7 +15,7 @@ App.Routers.Main = Backbone.Router.extend({
 	},
 	routes: {
 		"login": "loginWindow",
-		"create": "create_presentation",
+		"create": "createPresentation",
 		"preview_one": "preview_one",
 		"presentations/:presentation_id": "showPresentation"
 	},
@@ -23,7 +23,7 @@ App.Routers.Main = Backbone.Router.extend({
 		App.loginPopup.render();
 	},
   createPresentation: function() {
-  	App.createPresentation.render();
+    App.createPresentation.render();
   },
   preview_one: function() {
   	App.previewOne = new App.Views.PreviewOne();
@@ -33,7 +33,7 @@ App.Routers.Main = Backbone.Router.extend({
   	App.presentations.fetch({
   		success: function() {
   			var presentation = App.presentations.get(presentation_id);
-  		App.presentationView.setPresentation(presentation)
+  			App.presentationView.setPresentation(presentation)
   		}
   	})
   }
