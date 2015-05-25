@@ -87,3 +87,7 @@ app.use('/presentations', presentationRouter);
 
 // Export app as module
 module.exports = app;
+
+app.listen(process.env.PORT || 3000, function() {
+  console.log("Server on 3000");
+});
