@@ -20,8 +20,7 @@ app.use( bodyParser.urlencoded({ extended: false }) );
 app.use( bodyParser.json() );
 
 // set up serving of static assets
-app.use( express.static( path.join( application_root, 'public' ) ) );
-app.use( express.static( path.join( application_root, 'browser' ) ) );
+app.use(express.static(__dirname + '/public'));
 
 app.use(session({
   secret: 'thisisasecret',
@@ -84,9 +83,6 @@ app.get('/current_user', function(req, res) {
 
 app.use('/users', userRouter);
 app.use('/presentations', presentationRouter);
-
-// Export app as module
-module.exports = app;
 
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server on 3000");
