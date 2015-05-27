@@ -7,10 +7,10 @@ App.Routers.Main = Backbone.Router.extend({
 
 		App.loginPopup = new App.Views.LoginPopup();
 
+		App.presentationView = new App.Views.PresentationView({ model: new App.Models.UserPresentation });
+
 		App.presentations = new App.Collections.UserPresentations();
 		App.presentations.fetch();
-
-		App.presentationView = new App.Views.PresentationView({ model: new App.Models.UserPresentation });
 
 	},
 	routes: {
