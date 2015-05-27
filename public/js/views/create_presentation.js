@@ -79,6 +79,10 @@ App.Views.CreatePresentation = Backbone.View.extend({
     $('#slide-8-btn').css('color', '#E26A6A')
   },
   logOut: function() {
+    $.ajax({
+    url: '/users/sessions',
+    method: 'DELETE',
+  });
     App.home = new App.Views.Home();
     App.home.render();
   },
