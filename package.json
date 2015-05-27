@@ -11,12 +11,15 @@
     "handlebars": "^3.0.0",
     "jquery": "^2.1.3",
     "morgan": "^1.5.1",
+    "mysql": "^2.6.2",
+    "newrelic": ">=0.9",
     "path": "^0.11.14",
     "pg": "^4.3.0",
     "pg-hstore": "^2.3.1",
     "request": "^2.55.0",
-    "sequelize": "^2.0.3",
+    "sequelize": "^2.1.3",
     "sequelize-cli": "^1.7.0",
+    "socket.io": "latest",
     "underscore": "^1.8.2"
   },
   "scripts": {
@@ -28,10 +31,10 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/conceptive/self_slide.git"
+    "url": "https://github.com/conceptive/SelfSlide.git"
   },
   "bugs": {
-    "url": "https://github.com/conceptive/self_slide/issues"
+    "url": "https://github.com/conceptive/SelfSlide/issues"
   },
-  "homepage": "https://github.com/conceptive/self_slide"
+  "homepage": "https://github.com/conceptive/SelfSlide"
 }
