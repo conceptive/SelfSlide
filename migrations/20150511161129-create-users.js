@@ -9,22 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       username: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       password_digest: {
         type: Sequelize.TEXT
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
       name: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
-      phone: {
-        type: Sequelize.INTEGER,
-        allowNull: true
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
