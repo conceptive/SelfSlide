@@ -27,17 +27,17 @@ App.Views.LoginPopup = Backbone.View.extend({
     var username = $('#login-username').val();
     var password = $('#login-password').val();
 
-    $.post('/sessions',{
+    $.post('/users/sessions',{
       username: username,
       password: password
     }).done(this.renderSession.bind(this))
-      .done(this.hidePopup.bind(this))
-        .fail(function(response) {
-        var err = response.responseJSON;
-        alert(err.err + ' - ' + err.msg);
-    });
+      .fail(function(response) {
+      var err = response.responseJSON;
+      alert(err.err + ' - ' + err.msg);
+    });   
   },
   renderSession: function(userData) {
+    this.hidePopup();
     var currentUser = new App.Models.User(userData);
     App.createPresentation = new App.Views.CreatePresentation({model: currentUser});
     Backbone.history.navigate("create", true);
@@ -47,15 +47,33 @@ App.Views.LoginPopup = Backbone.View.extend({
     var password = $('#create-password').val();
     var name = $('#create-name').val();
 
-    $.post('/users', {
-      username: username,
-      password: password,
-      name: name
-    }).done(this.createUser.bind(this));
+      if (password.length < 6 || password.length > 20) {
+              $('#signup-errors').empty();
+              $("<li class='signup-error'>").text("Password must be between 6-20 characters long").appendTo("#signup-errors");
+              $("#signup-errors li").fadeOut(2500);
+      } else {
+         $.post('/users', {
+            username: username,
+            password: password,
+            name: name
+          })
+            .fail(function(err) {
+              var errors = "";
+              err.responseJSON.err.forEach(function(error) {
+                errors += "<li>" + error + "</li>";
+              });
+              $("#signup-errors").html(errors);
+            })
+            .done(function(user){
+              this.model = new App.Models.User(user);
+              this.createUser();
+              $('#signup-errors').empty();
+            }.bind(this))
+        }
   },
   createUser: function() {
     $("#create-account-box").prepend("<h3>Account Created!</h3>")
     $("h3").attr("class", "on-create");
-    $(".on-create").fadeOut(3000);
+    $(".on-create").fadeOut(2000);
   },
 });
