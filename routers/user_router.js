@@ -13,16 +13,73 @@ var Presentation   = models.presentations;
 
 var userRouter = express.Router();
 
-var restrictAccess = function(req, res, next) {
-  var sessionID = parseInt( req.session.currentUser );
-  var reqID = parseInt( req.params.id );
+// var restrictAccess = function(req, res, next) {
+//   var sessionID = parseInt( req.session.currentUser );
+//   var reqID = parseInt( req.params.id );
 
-  sessionID === reqID ? next() : res.status(401).send({err: 401, msg: 'You do not have the right permission for this.'});
-};
+//   sessionID === reqID ? next() : res.status(401).send({err: 401, msg: 'You do not have the right permission for this.'});
+// };
 
-var authenticate = function(req, res, next) {
-  req.session.currentUser ? next() : res.status(400).send({err: 400, msg: 'You need to login again to access this section.'});
-};
+// var authenticate = function(req, res, next) {
+//   req.session.currentUser ? next() : res.status(400).send({err: 400, msg: 'You need to login again to access this section.'});
+// };
+
+userRouter.use(session({
+  secret: 'thisisasecret',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// Debugging Only
+userRouter.get('/debug_session', function(req, res) {
+  res.send(req.session);
+});
+
+userRouter.get('/current_user', function(req, res) {
+  var userID = req.session.currentUser;
+  User.findOne(userID)
+    .then(function(user) {
+      res.send(user);
+    });
+});
+
+userRouter.post('/sessions', function(req, res) {
+  var loginUsername = req.body.username;
+  var loginPassword = req.body.password;
+
+  User
+    .findOne({
+      where: { username: loginUsername }
+    })
+    .then(function(user) {
+      if (user) {
+        var passwordDigest = user.password_digest;
+        bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
+          if (result) {
+            req.session.currentUser = user.id;
+            res.send("Correct Credentials");
+          } else {
+            res.status(400);
+            res.send({
+              err: 400,
+              msg: 'Wrong password.'
+            });
+          }
+        });
+      } else {
+        res.status(400);
+        res.send({
+          err: 400,
+          msg: 'Username does not exist.'
+        });
+      }
+    });
+});
+
+userRouter.delete('/sessions', function(req, res) {
+  delete req.session.currentUser;
+  res.send('Successfully logged out.');
+});
 
 userRouter.get("/", function(req, res) {
   User
@@ -32,7 +89,7 @@ userRouter.get("/", function(req, res) {
   });
 });
 
-userRouter.get("/:id" , authenticate, restrictAccess, function(req, res) {
+userRouter.get("/:id" , function(req, res) {
 	var userID = req.params.id;
 	User.findOne({
 		where: {id: userID},
@@ -43,7 +100,7 @@ userRouter.get("/:id" , authenticate, restrictAccess, function(req, res) {
 	});
 });
 
-userRouter.get("/:id/presentations" , authenticate, restrictAccess, function(req, res) {
+userRouter.get("/:id/presentations" , function(req, res) {
   User.findOne({
     where: { id: req.params.id },
     include: [Presentation]
@@ -56,16 +113,13 @@ userRouter.get("/:id/presentations" , authenticate, restrictAccess, function(req
 userRouter.post('/', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  var usersEmail = req.body.email;
-  var usersName = req.body.name;
 
   bcrypt.hash(password, 10, function(err, hash) {
     User
       .create({
         username: username,
         password_digest: hash,
-        name: usersName,
-        email: usersEmail
+        name: req.body.name
       })
       .then(function(user) {
         res.send(user);
@@ -99,6 +153,5 @@ userRouter.delete("/:id", function(req, res) {
     });
   });
 });
-
 
 module.exports = userRouter;
