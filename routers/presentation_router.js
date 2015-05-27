@@ -24,7 +24,7 @@ presentationRouter.get("/" , function(req, res) {
 presentationRouter.post("/" , function(req, res) {
   console.log(req.body);
   var presentationData = req.body;
-  presentationData.user_id = parseInt(req.session.currentUser);
+  // presentationData.user_id = parseInt(req.session.currentUser);
   Presentation
   .create(presentationData)
   .then(function(presentation) {
