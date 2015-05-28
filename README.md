@@ -8,8 +8,6 @@ Node.js <br />
 Backbone.js<br />
 Socket.io<br />
 Reveal.js<br />
-Twilio API<br />
-Amazon Web Services<br />
 
 User Stories:<br />
 1. As a user, I want to be able to create an account, so I can login.<br />
